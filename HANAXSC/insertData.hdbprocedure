@@ -1,0 +1,35 @@
+PROCEDURE "insertData" ( 
+	in DATE DATE,
+	in COUNTRY_CODE NVARCHAR(2),
+	in COMPANY_CODE NVARCHAR(10),
+	in TYPE NVARCHAR(30),
+	in VALUE_DATE DATE,
+	in AMOUNT DOUBLE,
+	in CURRENCY NVARCHAR(3),
+	in COMMENTS NVARCHAR(100),
+	in LOCK_FLAG NVARCHAR(1)
+) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	--DEFAULT SCHEMA <default_schema_name>
+	--READS SQL DATA AS
+	AS -- "READS SQL DATA " removed  
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+insert into
+	"SACXLSX"
+	values 
+		(
+			DATE,
+			COUNTRY_CODE,
+			COMPANY_CODE,
+			TYPE,
+			VALUE_DATE,
+			AMOUNT,
+			CURRENCY,
+			COMMENTS,
+			LOCK_FLAG
+		);
+END;
