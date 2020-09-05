@@ -301,11 +301,12 @@
                     },
 
                     onValidate: function (e) {
-
                         var fU = this.getView().byId("idfileUploader");
                         var domRef = fU.getFocusDomRef();
                         var file = domRef.files[0];
                         var this_ = this;
+
+                        this_.wasteTime();
 
                         var oModel = new JSONModel();
                         oModel.setData({
@@ -373,9 +374,11 @@
                                     if (result_final.length === 0) {
                                         fU.setValue("");
                                         MessageToast.show("There is no record to be uploaded");
+                                        this_.runNext();
                                     } else if (result_final.length >= 2001) {
                                         fU.setValue("");
                                         MessageToast.show("Maximum records are 2000.");
+                                        this_.runNext();
                                     } else {
                                         // Bind the data to the Table
                                         oModel = new JSONModel();
@@ -416,6 +419,7 @@
                                                 }
                                             }));
 
+                                            this_.runNext();
 
                                         });
 
@@ -423,11 +427,13 @@
                                         fU.setValue("");
                                     }
                                 } else {
+                                    this_.runNext();
                                     fU.setValue("");
                                     MessageToast.show("Please upload the correct file");
                                 }
                             } else {
-                                console.log("Error: wrong xlsx template");
+                                this_.runNext();
+                                console.log("Error: wrong Excel File template");
                                 MessageToast.show("Please upload the correct file");
                             }
                         };
