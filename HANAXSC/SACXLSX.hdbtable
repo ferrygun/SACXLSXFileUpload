@@ -1,0 +1,17 @@
+// To define an HDB table with main sql type columns, you can use the following code.
+// In the example below a schema should exist.   
+table.schemaName = "COMMON";
+table.tableType = COLUMNSTORE; // ROWSTORE is an alternative value
+
+table.columns = [
+    {name = "DATE"; sqlType = DATE;  comment = "date - YYYYMMDD";},
+    {name = "COUNTRY_CODE"; sqlType = NVARCHAR; length = 2; comment = "Country Code";},
+    {name = "COMPANY_CODE"; sqlType = NVARCHAR; length = 10; comment = "Company Code";},
+    {name = "TYPE"; sqlType = NVARCHAR; length = 30; comment = "Type of Data";},
+    {name = "VALUE_DATE"; sqlType = DATE; comment = "Value Date - YYYYMMDD";},
+    {name = "AMOUNT"; sqlType = DOUBLE; comment = "Amount";},
+    {name = "CURRENCY"; sqlType = NVARCHAR; length = 3; comment = "Currency";},
+	{name = "COMMENTS"; sqlType = NVARCHAR; length = 100; comment = "Comments";},
+	{name = "LOCK_FLAG"; sqlType = NVARCHAR; length = 10; comment = "Lock Flag";}	
+];
+
